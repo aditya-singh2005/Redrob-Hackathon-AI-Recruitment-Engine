@@ -1,4 +1,5 @@
 # Redrob Hackathon — Submission Metadata
+# Mirror of portal metadata. Fill in any fields marked FILL_IN before pushing.
 
 team_name: "Mysterio"
 
@@ -7,9 +8,9 @@ primary_contact:
   email: "job.singhaditya00005@gmail.com"
   phone: "+91 9582144690"
 
-github_repository: "https://github.com/aditya-singh2005/redrob-hackathon"
+github_repository: "https://github.com/aditya-singh2005/Redrob-Hackathon-AI-Recruitment-Engine"
 
-sandbox_link: "PASTE_YOUR_COLAB_SANDBOX_LINK_HERE"
+sandbox_link: "https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing"
 
 ai_tools_declared:
   - Claude
@@ -18,7 +19,7 @@ compute_environment: "Pre-computation on Google Colab T4 GPU, Python 3.10. Ranki
 
 team_members:
   - name: "Aditya Singh"
-    email: "job.singhaditya00005@gmail.com"
+    email: "FILL_IN_YOUR_EMAIL"
     institution: "Delhi Technological University"
     roll_number: "2K23/CS/029"
 

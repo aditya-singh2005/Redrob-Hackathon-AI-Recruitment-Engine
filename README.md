@@ -74,7 +74,7 @@ redrob-hackathon/
 ## Setup
 
 ```bash
-git clone https://github.com/aditya-singh2005/redrob-hackathon
+git clone https://github.com/aditya-singh2005/Redrob-Hackathon-AI-Recruitment-Engine
 cd redrob-hackathon
 
 # Create virtual environment
@@ -143,7 +143,7 @@ python scripts/03_rank.py --candidates data/candidates.jsonl --out outputs/Myste
 A small-sample demo (≤100 candidates) that runs end-to-end on CPU in under
 5 minutes is available here:
 
-👉 **[Run on Google Colab](PASTE_YOUR_COLAB_SANDBOX_LINK_HERE)**
+👉 **[Run on Google Colab](https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing)**
 
 The sandbox accepts a small candidate JSON upload, runs the full ranking
 pipeline, and outputs a ranked CSV.
