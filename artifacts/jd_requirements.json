@@ -1,0 +1,247 @@
+{
+  "role_title": "Senior AI Engineer",
+  "company": "Redrob AI",
+  "yoe_min": 5,
+  "yoe_max": 9,
+  "preferred_locations": [
+    "pune",
+    "noida",
+    "delhi",
+    "delhi ncr",
+    "gurugram",
+    "gurgaon",
+    "hyderabad",
+    "mumbai",
+    "bengaluru",
+    "bangalore"
+  ],
+  "preferred_country": "india",
+  "notice_ideal_days": 30,
+  "notice_max_days": 90,
+  "must_have_skills": [
+    {
+      "name": "embeddings / semantic retrieval",
+      "aliases": [
+        "embedding",
+        "embeddings",
+        "sentence-transformers",
+        "sentence_transformers",
+        "openai embeddings",
+        "bge",
+        "e5",
+        "text embeddings",
+        "dense retrieval",
+        "semantic search",
+        "bi-encoder",
+        "bi encoder"
+      ],
+      "weight": 3.0
+    },
+    {
+      "name": "vector database / hybrid search",
+      "aliases": [
+        "pinecone",
+        "weaviate",
+        "qdrant",
+        "milvus",
+        "faiss",
+        "opensearch",
+        "elasticsearch",
+        "vector database",
+        "vector db",
+        "vector store",
+        "hybrid search",
+        "ann",
+        "approximate nearest neighbour"
+      ],
+      "weight": 3.0
+    },
+    {
+      "name": "ranking / retrieval systems",
+      "aliases": [
+        "ranking",
+        "ranker",
+        "retrieval",
+        "information retrieval",
+        "search ranking",
+        "recommendation system",
+        "recommender",
+        "learning to rank",
+        "ltr",
+        "re-ranking",
+        "reranking",
+        "candidate retrieval",
+        "bm25"
+      ],
+      "weight": 2.5
+    },
+    {
+      "name": "Python",
+      "aliases": [
+        "python",
+        "pyspark",
+        "pytorch",
+        "tensorflow"
+      ],
+      "weight": 1.5
+    },
+    {
+      "name": "evaluation frameworks (NDCG/MRR/MAP)",
+      "aliases": [
+        "ndcg",
+        "mrr",
+        "map",
+        "mean average precision",
+        "a/b test",
+        "ab test",
+        "offline evaluation",
+        "ranking evaluation",
+        "eval framework",
+        "evaluation framework",
+        "recall@k",
+        "precision@k"
+      ],
+      "weight": 2.0
+    }
+  ],
+  "nice_to_have_skills": [
+    {
+      "name": "LLM fine-tuning",
+      "aliases": [
+        "fine-tuning",
+        "finetuning",
+        "lora",
+        "qlora",
+        "peft",
+        "instruction tuning",
+        "rlhf",
+        "fine tuned",
+        "llm fine"
+      ],
+      "weight": 1.2
+    },
+    {
+      "name": "learning to rank",
+      "aliases": [
+        "learning to rank",
+        "lambdamart",
+        "xgboost rank",
+        "lightgbm rank",
+        "neural ranker",
+        "pointwise",
+        "pairwise",
+        "listwise"
+      ],
+      "weight": 1.0
+    },
+    {
+      "name": "LLMs / generative AI",
+      "aliases": [
+        "llm",
+        "large language model",
+        "gpt",
+        "claude",
+        "gemini",
+        "rag",
+        "retrieval augmented",
+        "langchain",
+        "llamaindex",
+        "transformer",
+        "bert",
+        "roberta",
+        "t5"
+      ],
+      "weight": 1.0
+    },
+    {
+      "name": "distributed systems / scale",
+      "aliases": [
+        "distributed",
+        "kafka",
+        "spark",
+        "airflow",
+        "kubernetes",
+        "k8s",
+        "microservices",
+        "large-scale",
+        "high throughput"
+      ],
+      "weight": 0.8
+    }
+  ],
+  "consulting_firm_names": [
+    "tcs",
+    "tata consultancy",
+    "infosys",
+    "wipro",
+    "accenture",
+    "cognizant",
+    "capgemini",
+    "hcl",
+    "tech mahindra",
+    "mphasis",
+    "hexaware",
+    "l&t infotech",
+    "ltimindtree",
+    "mindtree"
+  ],
+  "wrong_domain_signals": [
+    "computer vision",
+    "object detection",
+    "image segmentation",
+    "robotics",
+    "speech recognition",
+    "text-to-speech",
+    "tts",
+    "autonomous driving",
+    "lidar",
+    "slam"
+  ],
+  "product_company_signals": [
+    "product",
+    "saas",
+    "platform",
+    "marketplace",
+    "b2b",
+    "b2c",
+    "startup",
+    "series a",
+    "series b",
+    "series c",
+    "seed",
+    "launched",
+    "shipped",
+    "deployed to production",
+    "real users",
+    "at scale",
+    "production system"
+  ],
+  "strong_career_keywords": [
+    "end-to-end",
+    "owned",
+    "led",
+    "architected",
+    "designed",
+    "built from scratch",
+    "shipped",
+    "launched",
+    "drove",
+    "production",
+    "millions of users",
+    "at scale"
+  ],
+  "behavioral": {
+    "max_inactive_days": 90,
+    "min_response_rate": 0.3,
+    "max_notice_penalty_days": 90,
+    "github_active_threshold": 20,
+    "min_profile_completeness": 60
+  },
+  "score_weights": {
+    "semantic_similarity": 0.15,
+    "career_quality": 0.3,
+    "skill_match": 0.3,
+    "location": 0.15,
+    "education": 0.1
+  }
+}

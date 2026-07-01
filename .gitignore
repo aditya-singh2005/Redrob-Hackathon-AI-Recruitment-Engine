@@ -1,0 +1,25 @@
+# Virtual environment
+venv/
+
+# Large artifact files (regenerate using 02_feature_gen.py)
+artifacts/embeddings.npy
+artifacts/features.parquet
+artifacts/jd_embedding.npy
+
+# Data files (too large for GitHub)
+data/candidates.jsonl
+
+# Outputs (submission CSV not tracked in repo)
+outputs/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db

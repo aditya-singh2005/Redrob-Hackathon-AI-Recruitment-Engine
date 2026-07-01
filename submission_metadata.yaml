@@ -1,0 +1,45 @@
+# Redrob Hackathon — Submission Metadata
+
+team_name: "Mysterio"
+
+primary_contact:
+  name: "Aditya Singh"
+  email: "job.singhaditya00005@gmail.com"
+  phone: "+91 9582144690"
+
+github_repository: "https://github.com/aditya-singh2005/redrob-hackathon"
+
+sandbox_link: "PASTE_YOUR_COLAB_SANDBOX_LINK_HERE"
+
+ai_tools_declared:
+  - Claude
+
+compute_environment: "Pre-computation on Google Colab T4 GPU, Python 3.10. Ranking step on Samsung Galaxy Book 3, Intel Core i7, 16GB RAM, Windows 11, Python 3.11."
+
+team_members:
+  - name: "Aditya Singh"
+    email: "job.singhaditya00005@gmail.com"
+    institution: "Delhi Technological University"
+    roll_number: "2K23/CS/029"
+
+methodology_summary: |
+  Two-phase hybrid ranking system. Offline phase: parse JD into structured
+  requirements (must-have skills with weights, location preferences, behavioral
+  thresholds, disqualifier rules) and embed all 100K candidate profiles using
+  all-MiniLM-L6-v2. Online ranking phase loads pre-computed artifacts and
+  produces a composite score in under 60 seconds on CPU with no API calls.
+
+  Scoring: semantic similarity (cosine distance, JD vs candidate embedding)
+  + career quality (YoE in range, product vs consulting background, title fit)
+  + skill match (weighted alias matching vs must-have and nice-to-have skills)
+  + location fit (India + preferred city bonus)
+  + education (institution tier + field relevance).
+  All multiplied by behavioral signal (recency, response rate, notice period,
+  GitHub activity) and disqualifier penalty (honeypot detection via impossible
+  timelines and zero-experience expert claims).
+
+  Career quality weighted highest because JD explicitly warns against
+  keyword-stuffing. Behavioral signals applied as multiplier so engagement
+  quality modulates the entire fit score. Honeypot detection uses timeline
+  impossibility and zero-duration expert claims — fictional company names
+  are dataset noise on irrelevant profiles, not a reliable honeypot signal.
