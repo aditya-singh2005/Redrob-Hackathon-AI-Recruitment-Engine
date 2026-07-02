@@ -1,9 +1,10 @@
+<h1 align="center">🕵️ Mysterio - AI Recruitment Engine</h1>
+<p align="center"><b>Redrob Hackathon · Data & AI Challenge</b></p>
+
 <p align="center">
-  <img src="images/banner.png" alt="Mysterio — Redrob Candidate Ranking Engine" width="100%">
+  <img src="Image/banner.png" alt="Mysterio — Redrob Candidate Ranking Engine" width="100%">
 </p>
 
-<h1 align="center">🕵️ Mysterio — Intelligent Candidate Ranking System</h1>
-<p align="center"><b>Redrob Hackathon · Intelligent Candidate Discovery & Ranking Challenge</b></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Team-Mysterio-6f42c1?style=for-the-badge" alt="Team">
