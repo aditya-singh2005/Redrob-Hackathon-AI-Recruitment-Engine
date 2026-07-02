@@ -1,34 +1,61 @@
-# Redrob Hackathon — Intelligent Candidate Ranking System
+<p align="center">
+  <img src="images/banner.png" alt="Mysterio — Redrob Candidate Ranking Engine" width="100%">
+</p>
 
-**Team:** Mysterio  
-**Challenge:** Intelligent Candidate Discovery & Ranking  
-**Approach:** Hybrid weighted scoring with sentence-transformer embeddings
+<h1 align="center">🕵️ Mysterio — Intelligent Candidate Ranking System</h1>
+<p align="center"><b>Redrob Hackathon · Intelligent Candidate Discovery & Ranking Challenge</b></p>
 
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Team-Mysterio-6f42c1?style=for-the-badge" alt="Team">
+  <img src="https://img.shields.io/badge/Candidates-100K-blue?style=for-the-badge" alt="Candidates">
+  <img src="https://img.shields.io/badge/Rank%20Time-%3C60s-brightgreen?style=for-the-badge" alt="Rank Time">
+  <img src="https://img.shields.io/badge/Python-3.10%2F3.11-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Model-all--MiniLM--L6--v2-orange?style=for-the-badge" alt="Model">
+</p>
 
-## What this system does
-
-Ranks 100,000 candidates against a Senior AI Engineer job description using a
-two-phase pipeline:
-
-**Phase 1 — Offline pre-computation** (run once, can use GPU):
-- Parses the JD into structured requirements with weighted skill categories
-- Embeds all 100K candidate profiles using `all-MiniLM-L6-v2`
-- Computes 6 feature scores per candidate: skill match, career quality,
-  location, education, behavioral multiplier, and disqualifier penalty
-- Saves pre-computed artifacts to disk
-
-**Phase 2 — Fast ranking** (CPU only, under 60 seconds):
-- Loads pre-computed features and embeddings
-- Computes semantic similarity via a single matrix multiply (dot product)
-- Combines all scores with tuned weights into a final composite score
-- Outputs top-100 ranked candidates with fact-grounded reasoning
+<p align="center">
+  <a href="https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing"><img src="https://img.shields.io/badge/Colab-Live%20Demo-F9AB00?style=flat-square&logo=googlecolab&logoColor=white" alt="Colab Demo"></a>
+  <a href="https://github.com/aditya-singh2005/Redrob-Hackathon-AI-Recruitment-Engine/blob/main/outputs/Mysterio.csv"><img src="https://img.shields.io/badge/Output-Mysterio.csv-informational?style=flat-square&logo=googlesheets&logoColor=white" alt="Output CSV"></a>
+  <a href="https://drive.google.com/file/d/1Y2rXfWJGSqexjwzDxn1AE8VCdjdtCe7E/view"><img src="https://img.shields.io/badge/Architecture-Diagram-4285F4?style=flat-square&logo=googledrive&logoColor=white" alt="Architecture Diagram"></a>
+</p>
 
 ---
 
-## Scoring architecture
+## 🔗 Quick Links
 
-```
+| 🔗 Resource | 📄 Description |
+|---|---|
+| ▶️ [**Colab Demo**](https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing) | Run the full pipeline end-to-end on a small sample, no setup needed |
+| 📊 [**Submission Output**](https://github.com/aditya-singh2005/Redrob-Hackathon-AI-Recruitment-Engine/blob/main/outputs/Mysterio.csv) | Final ranked `Mysterio.csv` |
+| 🧭 [**Architecture Diagram**](https://drive.google.com/file/d/1Y2rXfWJGSqexjwzDxn1AE8VCdjdtCe7E/view) | Visual walkthrough of the two-phase pipeline |
+
+---
+
+## 🚀 What This System Does
+
+Mysterio ranks **100,000 candidates** against a Senior AI Engineer job description through a **two-phase pipeline** — heavy lifting done offline, ranking done instantly.
+
+### 🧠 Phase 1 — Offline Pre-computation *(run once, GPU optional)*
+- 📝 Parses the JD into structured requirements with weighted skill categories
+- 🧬 Embeds all 100K candidate profiles using `all-MiniLM-L6-v2`
+- 📐 Computes 6 feature scores per candidate — skill match, career quality, location, education, behavioral multiplier, disqualifier penalty
+- 💾 Saves pre-computed artifacts to disk
+
+### ⚡ Phase 2 — Fast Ranking *(CPU only, under 60 seconds)*
+- 📂 Loads pre-computed features and embeddings
+- ➗ Computes semantic similarity via a single matrix multiply
+- 🎯 Combines all scores with tuned weights into a final composite score
+- 🏆 Outputs top-100 ranked candidates with fact-grounded reasoning
+
+---
+
+## 🏗️ Scoring Architecture
+
+<p align="center">
+  <a href="https://drive.google.com/file/d/1Y2rXfWJGSqexjwzDxn1AE8VCdjdtCe7E/view">🧭 View the full architecture diagram →</a>
+</p>
+
+```text
 final_score = (
     0.20 × semantic_similarity     # embedding cosine sim vs JD vector
   + 0.30 × career_quality          # YoE in range, product company, title fit
@@ -39,31 +66,26 @@ final_score = (
   × disqualifier_penalty           # 0.0 for honeypots, 0.4 for consulting-only
 ```
 
-**Key design decisions:**
-- Career quality outweighs raw semantic similarity, because the JD explicitly
-  warns against keyword-stuffing. A candidate whose career description shows
-  shipped retrieval systems ranks higher than one whose skills list has all
-  the right words but whose title is "Marketing Manager."
-- Behavioral signals are a multiplier, not an additive bonus — a
-  perfect-on-paper candidate who hasn't logged in for 6 months and has a 5%
-  recruiter response rate is, for hiring purposes, not actually available.
-- Honeypot detection uses three rules: impossible employment timelines,
-  expert-level skills with zero months of usage, and YoE that exceeds what
-  the career history supports. The fictional-company names scattered across
-  the dataset (~78% of candidates) are dataset noise attached to irrelevant
-  profiles (Marketing Managers, Accountants), not a meaningful signal —
-  our scoring naturally buries these without special-casing.
+### 🎯 Key Design Decisions
+
+- **🏆 Career quality > raw similarity** — the JD explicitly warns against keyword-stuffing. A candidate whose career shows shipped retrieval systems ranks above one whose skills list has all the right words but whose title is "Marketing Manager."
+- **✖️ Behavioral signals are a multiplier, not a bonus** — a perfect-on-paper candidate who hasn't logged in for 6 months and has a 5% recruiter response rate is, for hiring purposes, not actually available.
+- **🍯 Honeypot detection** uses three rules: impossible employment timelines, expert-level skills with zero months of usage, and YoE exceeding what the career history supports. Fictional-company names scattered across ~78% of candidates are dataset noise attached to irrelevant profiles (Marketing Managers, Accountants) — our scoring naturally buries these without special-casing.
 
 ---
 
-## Repo structure
+## 📁 Repo Structure
 
-```
+```text
 redrob-hackathon/
 ├── scripts/
 │   ├── 01_parse_jd.py      # JD → structured requirements JSON (run once)
 │   ├── 02_feature_gen.py   # 100K candidates → features.parquet + embeddings.npy
 │   └── 03_rank.py          # fast ranking → submission CSV (CPU only, <60s)
+├── outputs/
+│   └── Mysterio.csv        # 🏆 final ranked submission
+├── images/
+│   └── banner.png
 ├── requirements.txt
 ├── README.md
 └── submission_metadata.yaml
@@ -71,7 +93,7 @@ redrob-hackathon/
 
 ---
 
-## Setup
+## ⚙️ Setup
 
 ```bash
 git clone https://github.com/aditya-singh2005/Redrob-Hackathon-AI-Recruitment-Engine
@@ -86,7 +108,7 @@ pip install -r requirements.txt
 
 Place `candidates.jsonl` (the 100K candidate pool) in a `data/` folder:
 
-```
+```text
 redrob-hackathon/
 └── data/
     └── candidates.jsonl
@@ -94,103 +116,83 @@ redrob-hackathon/
 
 ---
 
-## Reproducing the submission
+## 🔁 Reproducing the Submission
 
-### Step 1 — Parse JD (instant)
+### 1️⃣ Parse JD *(instant)*
 ```bash
 python scripts/01_parse_jd.py
 ```
-Output: `artifacts/jd_requirements.json`
+📤 Output: `artifacts/jd_requirements.json`
 
-### Step 2 — Generate features and embeddings (slow — run once)
+### 2️⃣ Generate Features & Embeddings *(slow — run once)*
 ```bash
 python scripts/02_feature_gen.py
 ```
-Output: `artifacts/features.parquet`, `artifacts/embeddings.npy`,
-`artifacts/jd_embedding.npy`
+📤 Output: `artifacts/features.parquet`, `artifacts/embeddings.npy`, `artifacts/jd_embedding.npy`
 
-This step embeds 100K profiles using `all-MiniLM-L6-v2`. On CPU this takes
-~5 hours. On a GPU (e.g. Colab T4) it takes ~5 minutes. This step may exceed
-the 5-minute wall-clock limit — it is pre-computation, not the ranking step.
+> ⏱️ Embeds 100K profiles with `all-MiniLM-L6-v2`. ~5 hours on CPU, ~5 minutes on a GPU (e.g. Colab T4). This step may exceed the 5-minute wall-clock limit — it's pre-computation, not the ranking step.
 
-### Step 3 — Rank (fast — CPU only, under 60 seconds)
+### 3️⃣ Rank *(fast — CPU only, under 60 seconds)*
 ```bash
 python scripts/03_rank.py --out outputs/Mysterio.csv
 ```
 
-This is the ranking step that must complete within the 5-minute compute
-budget. It loads pre-computed artifacts, does a single matrix multiply for
-semantic similarity, applies weighted scoring, and writes the CSV.
-No GPU. No API calls. No network.
+✅ This is the step that must complete within the 5-minute compute budget. It loads pre-computed artifacts, does a single matrix multiply for semantic similarity, applies weighted scoring, and writes the CSV. **No GPU. No API calls. No network.**
 
-**Single command for Stage 3 reproduction** (assumes artifacts already exist):
+**One-command Stage 3 reproduction** *(assumes artifacts already exist)*:
 ```bash
 python scripts/03_rank.py --candidates data/candidates.jsonl --out outputs/Mysterio.csv
 ```
 
 ---
 
-## Compute environment
+## 🖥️ Compute Environment
 
-- Pre-computation: Google Colab T4 GPU, Python 3.10
-- Ranking step: CPU only, Samsung Galaxy Book 3, Intel Core i7, 16GB RAM, Windows 11, Python 3.11
-- Ranking step wall-clock time: ~15 seconds
-
----
-
-## Sandbox / demo
-
-A small-sample demo (≤100 candidates) that runs end-to-end on CPU in under
-5 minutes is available here:
-
-👉 **[Run on Google Colab](https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing)**
-
-The sandbox accepts a small candidate JSON upload, runs the full ranking
-pipeline, and outputs a ranked CSV.
+| | |
+|---|---|
+| 🔧 Pre-computation | Google Colab T4 GPU, Python 3.10 |
+| 💻 Ranking step | CPU only — Samsung Galaxy Book 3, Intel Core i7, 16GB RAM, Windows 11, Python 3.11 |
+| ⏱️ Ranking wall-clock | ~15 seconds |
 
 ---
 
-## Dependencies
+## 🎮 Sandbox / Demo
 
-See `requirements.txt`. Key packages:
-- `sentence-transformers==3.0.1` — profile and JD embedding
-- `pandas`, `pyarrow` — feature storage and manipulation
-- `numpy` — matrix operations for scoring
-- `scikit-learn` — utilities
-- `tqdm` — progress bars
+A small-sample demo (≤100 candidates) that runs end-to-end on CPU in under 5 minutes: <a href="https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"></a>
+
+
+👉 **[Run on Google Colab](https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing)** — just run once. The sandbox accepts a small candidate JSON upload, runs the full ranking pipeline, and outputs a ranked CSV.
 
 ---
 
-## AI tools used
+## 📦 Dependencies
 
-Claude (Anthropic) was used as a development assistant throughout — for
-architecture design, debugging, and code review. All engineering decisions,
-debugging sessions, and architectural choices were made by the team with
-AI assistance. Declared honestly per hackathon rules.
+See [`requirements.txt`](requirements.txt). Key packages:
+
+| Package | Purpose |
+|---|---|
+| 🔤 `sentence-transformers==3.0.1` | Profile and JD embedding |
+| 🐼 `pandas`, `pyarrow` | Feature storage and manipulation |
+| 🔢 `numpy` | Matrix operations for scoring |
+| 🧪 `scikit-learn` | Utilities |
+| 📊 `tqdm` | Progress bars |
 
 ---
 
-## Methodology summary (≤200 words)
+## 🤖 AI Tools Used
 
-We built a two-phase hybrid ranking system. In the offline phase, we parse
-the JD into structured requirements (must-have skills with weights, location
-preferences, behavioral thresholds, disqualifier rules) and embed all 100K
-candidate profiles using `all-MiniLM-L6-v2`. The online ranking phase loads
-these pre-computed artifacts and produces a composite score in under 60
-seconds on CPU.
+Claude (Anthropic) was used as a development assistant throughout — for architecture design, debugging, and code review. All engineering decisions, debugging sessions, and architectural choices were made by the team with AI assistance. Declared honestly per hackathon rules.
 
-The scoring formula combines semantic similarity (cosine distance between
-candidate and JD embeddings), career quality (years of experience in range,
-product vs consulting company background, title relevance), skill match
-(weighted alias matching against must-have and nice-to-have skills), location
-fit (India + preferred city bonus), and education. These five dimensions are
-multiplied by a behavioral signal (recency, recruiter response rate, notice
-period, GitHub activity) and a disqualifier penalty (honeypot detection via
-impossible timelines and zero-experience expert claims).
+---
 
-Career quality is weighted highest because the JD explicitly warns against
-keyword-stuffing — a candidate who shipped a retrieval system at a product
-company is more valuable than one whose skill list matches perfectly but
-whose career shows no production deployment. Behavioral signals are applied
-as a multiplier rather than additive, so engagement quality modulates the
-entire fit score rather than compensating for poor skill match.
+## 📝 Methodology Summary *(≤200 words)*
+
+We built a two-phase hybrid ranking system. In the offline phase, we parse the JD into structured requirements (must-have skills with weights, location preferences, behavioral thresholds, disqualifier rules) and embed all 100K candidate profiles using `all-MiniLM-L6-v2`. The online ranking phase loads these pre-computed artifacts and produces a composite score in under 60 seconds on CPU.
+
+The scoring formula combines semantic similarity (cosine distance between candidate and JD embeddings), career quality (years of experience in range, product vs. consulting company background, title relevance), skill match (weighted alias matching against must-have and nice-to-have skills), location fit (India + preferred city bonus), and education. These five dimensions are multiplied by a behavioral signal (recency, recruiter response rate, notice period, GitHub activity) and a disqualifier penalty (honeypot detection via impossible timelines and zero-experience expert claims).
+
+Career quality is weighted highest because the JD explicitly warns against keyword-stuffing — a candidate who shipped a retrieval system at a product company is more valuable than one whose skill list matches perfectly but whose career shows no production deployment. Behavioral signals are applied as a multiplier rather than additive, so engagement quality modulates the entire fit score rather than compensating for poor skill match.
+
+---
+
+<p align="center">Built with ❤️ by Aditya Singh (<b>Team Mysterio</b>)</p>
