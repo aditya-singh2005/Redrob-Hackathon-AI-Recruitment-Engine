@@ -53,7 +53,7 @@ Mysterio ranks **100,000 candidates** against a Senior AI Engineer job descripti
 ## 🏗️ Scoring Architecture
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1Y2rXfWJGSqexjwzDxn1AE8VCdjdtCe7E/view">🧭 View the full architecture diagram →</a>
+  <a href="https://drive.google.com/file/d/1Y2rXfWJGSqexjwzDxn1AE8VCdjdtCe7E/view">🧭 <u> View System Architecture </u></a>
 </p>
 
 ```text
@@ -159,7 +159,12 @@ python scripts/03_rank.py --candidates data/candidates.jsonl --out outputs/Myste
 
 ## 🎮 Sandbox / Demo
 
-A small-sample demo (≤100 candidates) that runs end-to-end on CPU in under 5 minutes: <a href="https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"></a>
+A small-sample demo (≤100 candidates) that runs end-to-end on CPU in under 5 minutes:
+<div align="center">
+  <a href="https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+  </a>
+</div>
 
 
 👉 **[Run on Google Colab](https://colab.research.google.com/drive/10aLL_aFq-8Z7IfVfMysBfCK0DI4JCBA1?usp=sharing)** — just run once. The sandbox accepts a small candidate JSON upload, runs the full ranking pipeline, and outputs a ranked CSV.
