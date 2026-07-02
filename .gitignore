@@ -9,9 +9,6 @@ artifacts/jd_embedding.npy
 # Data files (too large for GitHub)
 data/candidates.jsonl
 
-# Outputs (submission CSV not tracked in repo)
-outputs/
-
 # Python cache
 __pycache__/
 *.pyc
